@@ -5,14 +5,13 @@ function entryItem(title, ingredients, directions) {
 
 let Pizza = new entryItem("Pizza", "Tomato Sauce, Dough, Pepperoni, Cheese", "Put ingredeints on the Dough. Sprinkle Cheese over it.");
 let Hamburger = new entryItem("Hamburger", "Bun, Beef, Tomato, Cheese, Salad", "Take the two buns, put everything inbetween - done!");
+let Wrap = new entryItem("Wrap", "Tortilla, Corn, Chicken, Salad, Salsa", "Take the Tortilla, put all the stuff in it and roll it up!");
 
 let lastElem = {};
-let list = [Pizza, Hamburger];
+let list = [Pizza, Hamburger, Wrap];
 
 function addBasics() {
   for (item in list) {
-    console.log(item);
-    console.log(item.title);
     var node = document.createElement("button");
     node.id = list[item].title;
     node.classList.add("flat");
@@ -28,7 +27,7 @@ function addBasics() {
 function addElem() {
   var node = document.createElement("button");
   node.id = lastElem.title;
-  node.class = "flat";
+  node.classList.add("flat");
   node.addEventListener("click", useAgain);
   node.appendChild(document.createTextNode(lastElem.title));
   document.querySelector("ol").appendChild(node);

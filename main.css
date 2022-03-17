@@ -16,18 +16,21 @@ h1 {
 
 .flat {
   border: 0;
-  /* background: none; */
-  /* box-shadow: none; */
+  background: none;
+  box-shadow: none;
   width: 100%;
   border-radius: 0px;
   display: block;
   background-color: rgb(72, 29, 36);
   color: white;
   text-align: left;
+  padding: 5px;
 }
 
-#items {
+.items {
   padding-left: 0px;
+  height: 70px;
+  overflow-y: scroll;
 }
 
 .outerElement {
@@ -43,4 +46,15 @@ h1 {
 .innerElement {
   background-color: rgb(72, 29, 36);
   color: white;
+  padding: 10px;
+  height: 70px;
+  overflow-y: scroll;
+}
+
+.top {
+  display: inline;
+}
+
+.top.right {
+  float: right;
 }
