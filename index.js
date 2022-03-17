@@ -63,5 +63,5 @@ function useAgain() {
   document.getElementById("directionsOutput").textContent = elem.directions;
 }
 
-document.getElementById("addNew").addEventListener("click", createElement);
+document.getElementById("addButton").addEventListener("click", createElement);
 addBasics();
