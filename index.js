@@ -15,7 +15,7 @@ function addBasics() {
     console.log(item.title);
     var node = document.createElement("button");
     node.id = list[item].title;
-    node.class = "flat";
+    node.classList.add("flat");
     node.addEventListener("click", useAgain);
     node.appendChild(document.createTextNode(list[item].title));
     document.querySelector("ol").appendChild(node);

@@ -7,4 +7,5 @@ h1 {
   background: none;
   box-shadow: none;
   border-radius: 0px;
+  display: block;
 }
