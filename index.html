@@ -5,13 +5,21 @@
   <body>
     <h1>Recipe Box</h1>
 
+    <div class="editPopup" onclick="editElement()">Click me!
+      <span class="popupForm" id="myPopup">
+        <input type="text" id="titlePopup" placeholder="title" />
+        <input type="text" id="ingredientsPopup" placeholder="ingredients" />
+        <input type="text" id="directionsPopup" placeholder="directions" />
+        <button id="submitChangesPopup" onClick="submitEntry()">Submit</button>
+      </span>
+    </div>
     <div id="inputFields">
       <input type="text" id="title" placeholder="title" />
       <input type="text" id="ingredients" placeholder="ingredients" />
       <input type="text" id="directions" placeholder="directions" />
     </div>
-    <div class="overview">
-      <ol class="items"></ol>
+    <div class="overview" id ="view">
+      <ol class="items" id="itemsOverview"></ol>
     </div>
     <div class="outerElement">
       <div class="top" id="nameOutput">Title</div>

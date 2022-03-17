@@ -10,6 +10,9 @@ let Wrap = new entryItem("Wrap", "Tortilla, Corn, Chicken, Salad, Salsa", "Take 
 let lastElem = {};
 let list = [Pizza, Hamburger, Wrap];
 
+document.getElementById("addButton").addEventListener("click", createElement);
+document.getElementById("deleteButton").addEventListener("click", deleteElement);
+
 function addBasics() {
   for (item in list) {
     var node = document.createElement("button");
@@ -22,18 +25,6 @@ function addBasics() {
     document.getElementById("ingredientsOutput").textContent = list[item].ingredients;
     document.getElementById("directionsOutput").textContent = list[item].directions;
   }
-}
-
-function addElem() {
-  var node = document.createElement("button");
-  node.id = lastElem.title;
-  node.classList.add("flat");
-  node.addEventListener("click", useAgain);
-  node.appendChild(document.createTextNode(lastElem.title));
-  document.querySelector("ol").appendChild(node);
-  document.getElementById("nameOutput").textContent = lastElem.title;
-  document.getElementById("ingredientsOutput").textContent = lastElem.ingredients;
-  document.getElementById("directionsOutput").textContent = lastElem.directions;
 }
 
 function createElement() {
@@ -49,6 +40,18 @@ function createElement() {
   addElem();
 }
 
+function addElem() {
+  var node = document.createElement("button");
+  node.id = lastElem.title;
+  node.classList.add("flat");
+  node.addEventListener("click", useAgain);
+  node.appendChild(document.createTextNode(lastElem.title));
+  document.querySelector("ol").appendChild(node);
+  document.getElementById("nameOutput").textContent = lastElem.title;
+  document.getElementById("ingredientsOutput").textContent = lastElem.ingredients;
+  document.getElementById("directionsOutput").textContent = lastElem.directions;
+}
+
 function useAgain() {
   let elem = {};
   for (let i = 0; i < list.length; i++) {
@@ -62,5 +65,45 @@ function useAgain() {
   document.getElementById("directionsOutput").textContent = elem.directions;
 }
 
-document.getElementById("addButton").addEventListener("click", createElement);
+function deleteElement() {
+  let itemTitle = document.getElementById("nameOutput").textContent;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].title === itemTitle) {
+      document.getElementById(list[i].title).remove();
+      list.splice(i, 1);
+      document.getElementById("nameOutput").textContent = list[0].title;
+      document.getElementById("ingredientsOutput").textContent = list[0].ingredients;
+      document.getElementById("directionsOutput").textContent = list[0].directions;
+    }
+  }
+}
+
+function editElement() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.add("show");
+}
+
+function submitEntry() {
+  let itemTitle = document.getElementById("nameOutput").textContent;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].title === itemTitle) {
+      if (document.getElementById("titlePopup").value) {
+        list[i].title = document.getElementById("titlePopup").value;
+      }
+      if (document.getElementById("ingredientsPopup").value) {
+        list[i].ingredients = document.getElementById("ingredientsPopup").value;
+      }
+      if (document.getElementById("directionsPopup").value) {
+        list[i].directions = document.getElementById("directionsPopup").value;
+      }
+      console.log(list[i].directions);
+      document.getElementById("nameOutput").textContent = list[i].title;
+      document.getElementById("ingredientsOutput").textContent = list[i].ingredients;
+      document.getElementById("directionsOutput").textContent = list[i].directions;
+    }
+  }
+  var popup = document.getElementById("myPopup");
+  popup.classList.remove("show");
+}
+
 addBasics();
