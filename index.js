@@ -80,7 +80,10 @@ function deleteElement() {
 
 function editElement() {
   var popup = document.getElementById("myPopup");
-  popup.classList.add("show");
+  popup.classList.add("showForm");
+  document.getElementById("titlePopup").value = document.getElementById("nameOutput").textContent;
+  document.getElementById("ingredientsPopup").value = document.getElementById("ingredientsOutput").textContent;
+  document.getElementById("directionsPopup").value = document.getElementById("directionsOutput").textContent;
 }
 
 function submitEntry() {
@@ -96,14 +99,13 @@ function submitEntry() {
       if (document.getElementById("directionsPopup").value) {
         list[i].directions = document.getElementById("directionsPopup").value;
       }
-      console.log(list[i].directions);
       document.getElementById("nameOutput").textContent = list[i].title;
       document.getElementById("ingredientsOutput").textContent = list[i].ingredients;
       document.getElementById("directionsOutput").textContent = list[i].directions;
     }
   }
   var popup = document.getElementById("myPopup");
-  popup.classList.remove("show");
+  popup.classList.remove("showForm");
 }
 
 addBasics();
