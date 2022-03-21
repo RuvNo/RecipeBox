@@ -3,14 +3,13 @@ function entryItem(title, ingredients, directions) {
   this.directions = directions;
 }
 
-let Pizza = new entryItem("Pizza", "Tomato Sauce, Dough, Pepperoni, Cheese", "Put ingredeints on the Dough. Sprinkle Cheese over it.");
+let Pizza = new entryItem("Pizza", "Tomato Sauce, Dough, Pepperoni, \nCheese", "Put ingredeints on the Dough. Sprinkle Cheese over it.");
 let Hamburger = new entryItem("Hamburger", "Bun, Beef, Tomato, Cheese, Salad", "Take the two buns, put everything inbetween - done!");
 let Wrap = new entryItem("Wrap", "Tortilla, Corn, Chicken, Salad, Salsa", "Take the Tortilla, put all the stuff in it and roll it up!");
 
 let lastElem = {};
 let list = [Pizza, Hamburger, Wrap];
 
-// document.getElementById("addButton").addEventListener("click", createElement);
 document.getElementById("deleteButton").addEventListener("click", deleteElement);
 
 function addBasics() {
@@ -93,7 +92,7 @@ function editElement(clickedID) {
 
 function submitEntry() {
   if (document.getElementById("submitChangesPopup").innerHTML === "Add") {
-    createElement()
+    createElement();
   } else {
     let itemTitle = document.getElementById("nameOutput").textContent;
     for (let i = 0; i < list.length; i++) {
@@ -113,8 +112,15 @@ function submitEntry() {
       }
     }
   }
+  closePopup();
+}
+
+function closePopup() {
   var popup = document.getElementById("myPopup");
   popup.classList.remove("showForm");
+  document.getElementById("titlePopup").value = "";
+  document.getElementById("ingredientsPopup").value = "";
+  document.getElementById("directionsPopup").value = "";
 }
 
 addBasics();
