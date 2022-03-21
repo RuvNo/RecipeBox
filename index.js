@@ -10,7 +10,7 @@ let Wrap = new entryItem("Wrap", "Tortilla, Corn, Chicken, Salad, Salsa", "Take 
 let lastElem = {};
 let list = [Pizza, Hamburger, Wrap];
 
-document.getElementById("addButton").addEventListener("click", createElement);
+// document.getElementById("addButton").addEventListener("click", createElement);
 document.getElementById("deleteButton").addEventListener("click", deleteElement);
 
 function addBasics() {
@@ -28,15 +28,12 @@ function addBasics() {
 }
 
 function createElement() {
-  let title = document.getElementById("title").value;
-  let ingredients = document.getElementById("ingredients").value;
-  let directions = document.getElementById("directions").value;
+  let title = document.getElementById("titlePopup").value;
+  let ingredients = document.getElementById("ingredientsPopup").value;
+  let directions = document.getElementById("directionsPopup").value;
   let elem = new entryItem(title, ingredients, directions);
   lastElem = elem;
   list.push(elem);
-  document.getElementById("title").textContent = "";
-  document.getElementById("ingredients").textContent = "";
-  document.getElementById("directions").textContent = "";
   addElem();
 }
 
@@ -78,30 +75,42 @@ function deleteElement() {
   }
 }
 
-function editElement() {
+function editElement(clickedID) {
   var popup = document.getElementById("myPopup");
   popup.classList.add("showForm");
-  document.getElementById("titlePopup").value = document.getElementById("nameOutput").textContent;
-  document.getElementById("ingredientsPopup").value = document.getElementById("ingredientsOutput").textContent;
-  document.getElementById("directionsPopup").value = document.getElementById("directionsOutput").textContent;
+  if (clickedID === "editButton") {
+    document.getElementById("titlePopup").value = document.getElementById("nameOutput").textContent;
+    document.getElementById("ingredientsPopup").value = document.getElementById("ingredientsOutput").textContent;
+    document.getElementById("directionsPopup").value = document.getElementById("directionsOutput").textContent;
+    document.getElementById("submitChangesPopup").innerHTML = "Submit";
+  } else {
+    document.getElementById("submitChangesPopup").innerHTML = "Add";
+    document.getElementById("titlePopup").value = "";
+    document.getElementById("ingredientsPopup").value = "";
+    document.getElementById("directionsPopup").value = "";
+  }
 }
 
 function submitEntry() {
-  let itemTitle = document.getElementById("nameOutput").textContent;
-  for (let i = 0; i < list.length; i++) {
-    if (list[i].title === itemTitle) {
-      if (document.getElementById("titlePopup").value) {
-        list[i].title = document.getElementById("titlePopup").value;
+  if (document.getElementById("submitChangesPopup").innerHTML === "Add") {
+    createElement()
+  } else {
+    let itemTitle = document.getElementById("nameOutput").textContent;
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].title === itemTitle) {
+        if (document.getElementById("titlePopup").value) {
+          list[i].title = document.getElementById("titlePopup").value;
+        }
+        if (document.getElementById("ingredientsPopup").value) {
+          list[i].ingredients = document.getElementById("ingredientsPopup").value;
+        }
+        if (document.getElementById("directionsPopup").value) {
+          list[i].directions = document.getElementById("directionsPopup").value;
+        }
+        document.getElementById("nameOutput").textContent = list[i].title;
+        document.getElementById("ingredientsOutput").textContent = list[i].ingredients;
+        document.getElementById("directionsOutput").textContent = list[i].directions;
       }
-      if (document.getElementById("ingredientsPopup").value) {
-        list[i].ingredients = document.getElementById("ingredientsPopup").value;
-      }
-      if (document.getElementById("directionsPopup").value) {
-        list[i].directions = document.getElementById("directionsPopup").value;
-      }
-      document.getElementById("nameOutput").textContent = list[i].title;
-      document.getElementById("ingredientsOutput").textContent = list[i].ingredients;
-      document.getElementById("directionsOutput").textContent = list[i].directions;
     }
   }
   var popup = document.getElementById("myPopup");

@@ -121,5 +121,8 @@ h1 {
 
 .innerText {
   resize: none;
-  overflow-y: scroll;
+  overflow: hidden;
+  background-color: transparent;
+  border: none;
+  color: white;
 }

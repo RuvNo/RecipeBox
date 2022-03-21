@@ -16,12 +16,14 @@
     <div class="outerElement">
       <div class="top" id="nameOutput">Title</div>
       <button class="top right" id="deleteButton">Delete</button>
-      <button class="top right" id="editButton" onclick="editElement()">Edit</button>
+      <button class="top right" id="editButton" onclick="editElement(this.id)">Edit</button>
       <div class="innerElement">
-        <textarea readonly rows="3" cols="50" class="innerText" id="ingredientsOutput"></textarea>
+        <div>Ingredients:</div>
+        <textarea readonly cols="50" class="innerText" id="ingredientsOutput"></textarea>
+        <div>Directions:</div>
         <textarea readonly rows="3" cols="50" class="innerText" id="directionsOutput"></textarea>
       </div>
-      <button id="addButton">Add New</button>
+      <button id="addButton" onclick="editElement(this.id)">Add New</button>
     </div>
     <div class="editPopup">
       <span id="myPopup" class="popupForm">
