@@ -3,11 +3,23 @@ function entryItem(title, ingredients, directions) {
   this.directions = directions;
 }
 
-let Pizza = new entryItem("Pizza", "Tomato Sauce, Dough, Pepperoni, \nCheese", "Put ingredeints on the Dough. Sprinkle Cheese over it.");
-let Hamburger = new entryItem("Hamburger", "Bun, Beef, Tomato, Cheese, Salad", "Take the two buns, put everything inbetween - done!");
-let Wrap = new entryItem("Wrap", "Tortilla, Corn, Chicken, Salad, Salsa", "Take the Tortilla, put all the stuff in it and roll it up!");
+let Pizza = new entryItem(
+  "Pizza",
+  "-Tomato Sauce,\n-Dough,\n-Pepperoni,\n-Onions,\n-Corn,\n-Cheese",
+  "1. Roll out the Dough\n2. Put ingredients on the Dough\n3. Sprinkle Cheese over it\n4. Put it in the oven\n5. Wait for about 20 minutes\n6. Enjoy your food!"
+);
+let Hamburger = new entryItem(
+  "Hamburger",
+  "-Bun,\n-Beef,\n-Salad,\n-Onions,\n-Sauce,\n-Cheese,\n-Cucumber",
+  "1. Separate the top and bottom bun\n2. Put your sauce on both buns\n3. Place the beef on the bottom bun\n4. Put the cheese on the beef\n5. Add the salad, onions and cucumbers\n6. Enjoy the taste!"
+);
+let Wrap = new entryItem(
+  "Wrap",
+  "-Tortilla,\n-Corn,\n-Pulled Chicken,\n-Salsa,\n-Onions,\n-Salad,\n-Beans",
+  "1. Take the Tortilla and put salsa on it\n2. Spread the chicken on there\n3. Sprinkle Cheese over it\n4. Put the beans on the pile\n5. Disperse the onions and salad\n6. Roll it up - and enjoy!"
+);
 
-let recipeList = [Pizza, Hamburger, Wrap];
+let recipeList = [Wrap, Hamburger, Pizza];
 
 const normal = {
   get title() {
@@ -100,7 +112,7 @@ function deleteElement() {
 
 function editElement(clickedID) {
   popup.complete.classList.add("showForm");
-  document.getElementById("fullBackground").classList.add("faded")
+  document.getElementById("fullBackground").classList.add("faded");
   if (clickedID === "editButton") {
     popup.title.value = normal.title.textContent;
     popup.ingredients.value = normal.ingredients.textContent;
@@ -141,7 +153,7 @@ function submitEntry() {
 
 function closePopup() {
   popup.complete.classList.remove("showForm");
-  document.getElementById("fullBackground").classList.remove("faded")
+  document.getElementById("fullBackground").classList.remove("faded");
   popup.title.value = "";
   popup.ingredients.value = "";
   popup.directions.value = "";

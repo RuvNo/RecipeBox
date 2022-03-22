@@ -96,8 +96,8 @@ h1 {
 
 .innerHeader {
   font-size: 15px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 /* Popup */
@@ -170,10 +170,6 @@ h1 {
 #closePopup {
   float: right;
   font-size: 10px;
-}
-
-.backgroundFaded {
-  background-color: rgba(158, 157, 157, 0.8);
 }
 
 .overlay {
