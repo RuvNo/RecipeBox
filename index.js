@@ -12,6 +12,36 @@ let list = [Pizza, Hamburger, Wrap];
 
 document.getElementById("deleteButton").addEventListener("click", deleteElement);
 
+const normal = {
+  get title() {
+    return document.getElementById("titleOutput");
+  },
+  get ingredients() {
+    return document.getElementById("ingredientsOutput");
+  },
+  get directions() {
+    return document.getElementById("directionsOutput");
+  },
+};
+
+const popup = {
+  get title() {
+    return document.getElementById("titlePopup");
+  },
+  get ingredients() {
+    return document.getElementById("ingredientsPopup");
+  },
+  get directions() {
+    return document.getElementById("directionsPopup");
+  },
+  get submitChanges() {
+    return document.getElementById("submitChangesPopup");
+  },
+  get complete() {
+    return document.getElementById("myPopup");
+  },
+};
+
 function addBasics() {
   for (item in list) {
     var node = document.createElement("button");
@@ -20,16 +50,16 @@ function addBasics() {
     node.addEventListener("click", useAgain);
     node.appendChild(document.createTextNode(list[item].title));
     document.querySelector("ol").appendChild(node);
-    document.getElementById("nameOutput").textContent = list[item].title;
-    document.getElementById("ingredientsOutput").textContent = list[item].ingredients;
-    document.getElementById("directionsOutput").textContent = list[item].directions;
+    normal.title.textContent = list[item].title;
+    normal.ingredients.textContent = list[item].ingredients;
+    normal.directions.textContent = list[item].directions;
   }
 }
 
 function createElement() {
-  let title = document.getElementById("titlePopup").value;
-  let ingredients = document.getElementById("ingredientsPopup").value;
-  let directions = document.getElementById("directionsPopup").value;
+  let title = popup.title.value;
+  let ingredients = popup.ingredients.value;
+  let directions = popup.directions.value;
   let elem = new entryItem(title, ingredients, directions);
   lastElem = elem;
   list.push(elem);
@@ -43,9 +73,9 @@ function addElem() {
   node.addEventListener("click", useAgain);
   node.appendChild(document.createTextNode(lastElem.title));
   document.querySelector("ol").appendChild(node);
-  document.getElementById("nameOutput").textContent = lastElem.title;
-  document.getElementById("ingredientsOutput").textContent = lastElem.ingredients;
-  document.getElementById("directionsOutput").textContent = lastElem.directions;
+  normal.title.textContent.textContent = lastElem.title;
+  normal.ingredients.textContent.textContent = lastElem.ingredients;
+  normal.directions.textContent.textContent = lastElem.directions;
 }
 
 function useAgain() {
@@ -56,59 +86,59 @@ function useAgain() {
       i = list.length;
     }
   }
-  document.getElementById("nameOutput").textContent = elem.title;
-  document.getElementById("ingredientsOutput").textContent = elem.ingredients;
-  document.getElementById("directionsOutput").textContent = elem.directions;
+  normal.title.textContent = elem.title;
+  normal.ingredients.textContent = elem.ingredients;
+  normal.directions.textContent = elem.directions;
 }
 
 function deleteElement() {
-  let itemTitle = document.getElementById("nameOutput").textContent;
+  let itemTitle = normal.title.textContent;
   for (let i = 0; i < list.length; i++) {
     if (list[i].title === itemTitle) {
       document.getElementById(list[i].title).remove();
       list.splice(i, 1);
-      document.getElementById("nameOutput").textContent = list[0].title;
-      document.getElementById("ingredientsOutput").textContent = list[0].ingredients;
-      document.getElementById("directionsOutput").textContent = list[0].directions;
+      normal.title.textContent.textContent = list[0].title;
+      normal.ingredients.textContent.textContent = list[0].ingredients;
+      normal.directions.textContent.textContent = list[0].directions;
     }
   }
 }
 
 function editElement(clickedID) {
-  var popup = document.getElementById("myPopup");
-  popup.classList.add("showForm");
+  var myPopup = popup.complete;
+  myPopup.classList.add("showForm");
   if (clickedID === "editButton") {
-    document.getElementById("titlePopup").value = document.getElementById("nameOutput").textContent;
-    document.getElementById("ingredientsPopup").value = document.getElementById("ingredientsOutput").textContent;
-    document.getElementById("directionsPopup").value = document.getElementById("directionsOutput").textContent;
-    document.getElementById("submitChangesPopup").innerHTML = "Submit";
+    popup.title.value = normal.title.textContent;
+    popup.ingredients.value = normal.ingredients.textContent;
+    popup.directions.value = normal.directions.textContent;
+    popup.submitChanges.innerHTML = "Submit";
   } else {
-    document.getElementById("submitChangesPopup").innerHTML = "Add";
-    document.getElementById("titlePopup").value = "";
-    document.getElementById("ingredientsPopup").value = "";
-    document.getElementById("directionsPopup").value = "";
+    popup.submitChanges.innerHTML = "Add";
+    popup.title.value = "";
+    popup.ingredients.value = "";
+    popup.directions.value = "";
   }
 }
 
 function submitEntry() {
-  if (document.getElementById("submitChangesPopup").innerHTML === "Add") {
+  if (popup.submitChanges.innerHTML === "Add") {
     createElement();
   } else {
-    let itemTitle = document.getElementById("nameOutput").textContent;
+    let itemTitle = normal.title.textContent;
     for (let i = 0; i < list.length; i++) {
       if (list[i].title === itemTitle) {
-        if (document.getElementById("titlePopup").value) {
-          list[i].title = document.getElementById("titlePopup").value;
+        if (popup.title.value) {
+          list[i].title = popup.title.value;
         }
-        if (document.getElementById("ingredientsPopup").value) {
-          list[i].ingredients = document.getElementById("ingredientsPopup").value;
+        if (popup.ingredients.value) {
+          list[i].ingredients = popup.ingredients.value;
         }
-        if (document.getElementById("directionsPopup").value) {
-          list[i].directions = document.getElementById("directionsPopup").value;
+        if (popup.directions.value) {
+          list[i].directions = popup.directions.value;
         }
-        document.getElementById("nameOutput").textContent = list[i].title;
-        document.getElementById("ingredientsOutput").textContent = list[i].ingredients;
-        document.getElementById("directionsOutput").textContent = list[i].directions;
+        normal.title.textContent = list[i].title;
+        normal.ingredients.textContent = list[i].ingredients;
+        normal.directions.textContent = list[i].directions;
       }
     }
   }
@@ -116,11 +146,11 @@ function submitEntry() {
 }
 
 function closePopup() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.remove("showForm");
-  document.getElementById("titlePopup").value = "";
-  document.getElementById("ingredientsPopup").value = "";
-  document.getElementById("directionsPopup").value = "";
+  var myPopup = popup.complete;
+  myPopup.classList.remove("showForm");
+  popup.title.value = "";
+  popup.ingredients.value = "";
+  popup.directions.value = "";
 }
 
 addBasics();
