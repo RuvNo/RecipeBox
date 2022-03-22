@@ -7,12 +7,16 @@ html {
 
 h1 {
   color: White;
+  font-family: Sonsie One;
+  text-align: center;
 }
 
+/* Overview of added Recipes */
 .overview {
+  align-self: center;
   background-color: rgb(8, 76, 97);
   width: 600px;
-  margin: 20px 0px 0px 0px;
+  margin: auto;
   border: 4px solid rgb(8, 76, 97);
   border-radius: 12px;
   height: 140px;
@@ -28,6 +32,7 @@ h1 {
   color: white;
   text-align: left;
   padding: 5px;
+  font-family: Sonsie One;
 }
 
 .items {
@@ -37,6 +42,7 @@ h1 {
   background-color: rgb(72, 29, 36);
 }
 
+/* Details View */
 .outerElement {
   font-size: 20;
   color: white;
@@ -44,15 +50,8 @@ h1 {
   width: 600px;
   border: 4px solid rgb(8, 76, 97);
   border-radius: 12px;
-  margin: 20px 0px 0px 0px;
-}
-
-.innerElement {
-  background-color: rgb(72, 29, 36);
-  color: white;
-  padding: 10px;
-  height: 300px;
-  overflow-y: scroll;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .top {
@@ -63,65 +62,20 @@ h1 {
   float: right;
 }
 
-/* Popup container */
-.editPopup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  margin: auto;
+.normalButton {
+  color: white;
+  background-color: transparent;
+  border: 0;
+  margin: 10px;
 }
 
-/* The actual popup (appears on top) */
-.editPopup .popupForm {
-  visibility: hidden;
-  width: 400px;
-  height: 500px;
-  background-color: rgb(97, 97, 150);
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  position: absolute;
-  margin: auto;
-  z-index: 1;
-  margin-top: -250px;
-  margin-left: 100px;
-}
-
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
-.editPopup .showForm {
-  visibility: visible;
-}
-
-#titlePopup {
-  width: 300px;
-  height: 30px;
-  margin: 00px 20px 40px 20px;
-}
-
-#ingredientsPopup {
-  width: 300px;
-  height: 100px;
-  margin: 00px 20px 40px 20px;
+.innerElement {
+  background-color: rgb(72, 29, 36);
+  color: white;
+  padding: 10px;
+  height: 300px;
+  width: 96%;
   overflow-y: scroll;
-}
-
-#directionsPopup {
-  width: 300px;
-  height: 130px;
-  margin: 00px 20px 40px 20px;
-  overflow-y: scroll;
-  white-space: pre-line;
-}
-
-#submitChangesPopup {
-  display: block;
-  margin: auto;
-}
-
-.popupText {
-  resize: none;
-  overflow-y: scroll;
-  font-family: Sonsie One;
 }
 
 .innerText {
@@ -133,19 +87,97 @@ h1 {
   font-family: Montserrat;
 }
 
-.popUpButtons {
-  display: inline-block;
-}
-
 .innerHeader {
   font-size: 15px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-#closePopup {
-  float: right;
+/* Popup */
+.editPopup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin: auto;
 }
 
-.normalButton {
+.editPopup .popupForm {
+  visibility: hidden;
+  width: 500px;
+  height: 600px;
+  background-color: rgb(97, 97, 150);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  margin: auto;
+  z-index: 1;
+  margin-top: -600px;
+}
+
+.editPopup .showForm {
+  visibility: visible;
+}
+
+#titlePopup {
+  height: 30px;
+  margin: 0px 20px 40px 20px;
+}
+
+#ingredientsPopup {
+  height: 100px;
+  margin: 00px 20px 40px 20px;
+  overflow-y: scroll;
+}
+
+#directionsPopup {
+  height: 130px;
+  margin: 00px 20px 40px 20px;
+  overflow-y: scroll;
+}
+
+#submitChangesPopup {
+  display: block;
+  margin: auto;
+}
+
+.popupText {
+  width: 300px;
+  margin: 10px 20px 40px 20px;
+  margin: auto;
+  resize: none;
+  overflow-y: scroll;
+  font-family: Sonsie One;
+}
+
+.popUpButtons {
+  display: inline-block;
+  border: 0;
+  background-color: rgb(8, 76, 97);
+  color: white;
+  font-family: Fugaz One;
+  font-size: 30px;
+  margin: 5px;
+}
+
+#closePopup {
+  float: right;
+  font-size: 10px;
+}
+
+.backgroundFaded {
+  background-color: rgba(158, 157, 157, 0.8);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.overlay.faded {
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.4);
 }

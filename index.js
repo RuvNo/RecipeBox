@@ -100,6 +100,7 @@ function deleteElement() {
 
 function editElement(clickedID) {
   popup.complete.classList.add("showForm");
+  document.getElementById("fullBackground").classList.add("faded")
   if (clickedID === "editButton") {
     popup.title.value = normal.title.textContent;
     popup.ingredients.value = normal.ingredients.textContent;
@@ -140,6 +141,7 @@ function submitEntry() {
 
 function closePopup() {
   popup.complete.classList.remove("showForm");
+  document.getElementById("fullBackground").classList.remove("faded")
   popup.title.value = "";
   popup.ingredients.value = "";
   popup.directions.value = "";

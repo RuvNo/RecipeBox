@@ -1,37 +1,41 @@
 <html>
   <head>
     <link rel="stylesheet" href="main.css" />
+    <script src="https://use.fontawesome.com/95b3019bed.js"></script>
   </head>
   <body>
-    <h1>Recipe Box</h1>
-    <div class="overview" id="view">
-      <ol class="items" id="itemsOverview"></ol>
-    </div>
-
-    <div class="outerElement">
-      <div class="top" id="titleOutput">Title</div>
-      <button class="top right normalButton" id="deleteButton" onClick="deleteElement()">Delete</button>
-      <button class="top right normalButton" id="editButton" onclick="editElement(this.id)">Edit</button>
-      <div class="innerElement">
-        <div class="innerHeader">Ingredients:</div>
-        <textarea readonly rows="10" cols="50" class="innerText" id="ingredientsOutput"></textarea>
-        <div class="innerHeader">Directions:</div>
-        <textarea readonly rows="20" cols="50" class="innerText" id="directionsOutput"></textarea>
+    <div id="fullBackground" class="overlay">
+      <h1>Recipe Box</h1>
+      <div class="overview" id="view">
+        <ol class="items" id="itemsOverview"></ol>
       </div>
-      <button id="addButton" class="normalButton" onclick="editElement(this.id)">Add new</button>
-    </div>
-    <div class="editPopup">
-      <span class="popupForm" id="myPopup">
-        <button class="popUpButtons" id="closePopup" onclick="closePopup()">&#x2718</button>
-        <div class="popupHeader">Title:</div>
-        <textarea rows="1" cols="50" class="popupText" id="titlePopup" placeholder="title"></textarea>
-        <div class="popupHeader">Ingredients:</div>
-        <textarea rows="10" cols="50" class="popupText" id="ingredientsPopup" placeholder="ingredients"></textarea>
-        <div class="popupHeader">Directions:</div>
-        <textarea rows="20" cols="50" class="popupText" id="directionsPopup" placeholder="directions"></textarea>
-        <button class="popUpButtons" id="submitChangesPopup" onClick="submitEntry()">Submit</button>
-        <button class="popUpButtons" id="cancelPopup" onClick="closePopup()">Cancel</button>
-      </span>
+
+      <div class="outerElement">
+        <div class="top" id="titleOutput"></div>
+        <i class="fa fa-trash fa-2x top right normalButton" id="deleteButton" onClick="deleteElement()"></i>
+        <i class="fa fa-pencil-square-o fa-2x top right normalButton" id="editButton" onclick="editElement(this.id)"></i>
+        <div class="innerElement">
+          <div class="innerHeader">Ingredients:</div>
+          <textarea readonly rows="10" cols="50" class="innerText" id="ingredientsOutput"></textarea>
+          <div class="innerHeader">Directions:</div>
+          <textarea readonly rows="20" cols="50" class="innerText" id="directionsOutput"></textarea>
+        </div>
+        <i class="fa fa-plus-square-o fa-2x normalButton" id="addButton" onclick="editElement(this.id)"></i>
+      
+        <div class="editPopup">
+          <span class="popupForm" id="myPopup">
+            <button class="popUpButtons" id="closePopup" onclick="closePopup()">&#x2718</button>
+            <div class="popupHeader">Title:</div>
+            <textarea rows="1" cols="50" class="popupText" id="titlePopup" placeholder="title"></textarea>
+            <div class="popupHeader">Ingredients:</div>
+            <textarea rows="10" cols="50" class="popupText" id="ingredientsPopup" placeholder="ingredients"></textarea>
+            <div class="popupHeader">Directions:</div>
+            <textarea rows="20" cols="50" class="popupText" id="directionsPopup" placeholder="directions"></textarea>
+            <button class="popUpButtons" id="submitChangesPopup" onClick="submitEntry()">Submit</button>
+            <button class="popUpButtons" id="cancelPopup" onClick="closePopup()">Cancel</button>
+          </span>
+        </div>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>
