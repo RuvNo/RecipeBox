@@ -10,25 +10,25 @@
 
     <div class="outerElement">
       <div class="top" id="titleOutput">Title</div>
-      <button class="top right" id="deleteButton" onClick="deleteElement()">Delete</button>
-      <button class="top right" id="editButton" onclick="editElement(this.id)">Edit</button>
+      <button class="top right normalButton" id="deleteButton" onClick="deleteElement()">Delete</button>
+      <button class="top right normalButton" id="editButton" onclick="editElement(this.id)">Edit</button>
       <div class="innerElement">
         <div class="innerHeader">Ingredients:</div>
         <textarea readonly rows="10" cols="50" class="innerText" id="ingredientsOutput"></textarea>
         <div class="innerHeader">Directions:</div>
         <textarea readonly rows="20" cols="50" class="innerText" id="directionsOutput"></textarea>
       </div>
-      <button id="addButton" onclick="editElement(this.id)">Add new</button>
+      <button id="addButton" class="normalButton" onclick="editElement(this.id)">Add new</button>
     </div>
     <div class="editPopup">
-      <span id="myPopup" class="popupForm">
-        <button id="closePopup" onclick="closePopup()">&#x2718</button>
-        <div>Title:</div>
-        <textarea rows="1" cols="50" class="editForm" id="titlePopup" placeholder="title"></textarea>
-        <div>Ingredients:</div>
-        <textarea rows="10" cols="50" class="editForm" id="ingredientsPopup" placeholder="ingredients"></textarea>
-        <div>Directions:</div>
-        <textarea rows="20" cols="50" class="editForm" id="directionsPopup" placeholder="directions"></textarea>
+      <span class="popupForm" id="myPopup">
+        <button class="popUpButtons" id="closePopup" onclick="closePopup()">&#x2718</button>
+        <div class="popupHeader">Title:</div>
+        <textarea rows="1" cols="50" class="popupText" id="titlePopup" placeholder="title"></textarea>
+        <div class="popupHeader">Ingredients:</div>
+        <textarea rows="10" cols="50" class="popupText" id="ingredientsPopup" placeholder="ingredients"></textarea>
+        <div class="popupHeader">Directions:</div>
+        <textarea rows="20" cols="50" class="popupText" id="directionsPopup" placeholder="directions"></textarea>
         <button class="popUpButtons" id="submitChangesPopup" onClick="submitEntry()">Submit</button>
         <button class="popUpButtons" id="cancelPopup" onClick="closePopup()">Cancel</button>
       </span>

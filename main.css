@@ -118,7 +118,7 @@ h1 {
   margin: auto;
 }
 
-.editForm {
+.popupText {
   resize: none;
   overflow-y: scroll;
   font-family: Sonsie One;
@@ -145,4 +145,7 @@ h1 {
 
 #closePopup {
   float: right;
+}
+
+.normalButton {
 }
